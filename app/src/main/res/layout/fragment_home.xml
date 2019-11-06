@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:src="@mipmap/main_view_bg" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/main_view_bg2" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="32dp"
+        android:paddingTop="18dp"
+        android:paddingRight="32dp"
+        android:paddingBottom="22dp"
+        android:src="@mipmap/main_view_index" />
+
+    <TextView
+        android:id="@+id/tv_home_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="52dp"
+        android:text="用户"
+        android:textColor="@color/brown"
+        android:textSize="@dimen/size_16"
+        android:textStyle="bold" />
+
+</RelativeLayout>

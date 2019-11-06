@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:src="@mipmap/main_view_bg" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginBottom="46dp">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/phonogram_top_bg" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="25dp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/phonogram_bottom_bg" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/tv_phonics_des01"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/lp_tips_bg"
+                            android:text="中文"
+                            android:textColor="@color/text_brown"
+                            android:textSize="@dimen/size_16" />
+
+                        <com.yc.aeiou.view.custom.ClassIndex
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:iconIndex="@mipmap/category1"
+                            app:isShowVip="false" />
+
+                        <com.yc.aeiou.view.custom.ClassIndex
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:iconIndex="@mipmap/category1"
+                            app:isShowVip="true" />
+
+
+                        <TextView
+                            android:id="@+id/tv_phonics_des02"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="555555" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+    </ScrollView>
+</RelativeLayout>
