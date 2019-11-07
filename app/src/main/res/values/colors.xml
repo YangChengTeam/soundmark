@@ -11,4 +11,6 @@
     <color name="lp_tips_bg">#ffffd391</color>
 
     <color name="text_brown">#040000</color>
+    <color name="gray">#999</color>
+    <color name="gray_low">#4444</color>
 </resources>

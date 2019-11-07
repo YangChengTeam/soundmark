@@ -7,9 +7,6 @@ import android.util.Log;
 
 import androidx.core.content.ContextCompat;
 
-import com.qw.soul.permission.SoulPermission;
-import com.qw.soul.permission.bean.Permission;
-import com.qw.soul.permission.callbcak.CheckRequestPermissionListener;
 import com.yc.aeiou.factory.ThreadPoolProxyFactory;
 import com.yc.aeiou.proxy.ThreadPoolProxy;
 

@@ -8,6 +8,8 @@ import com.yc.aeiou.R;
 import com.yc.aeiou.bean.InitBean;
 import com.yc.aeiou.contract.InitContract;
 import com.yc.aeiou.presenter.InitContractPresenter;
+import com.yc.music.listener.MusicInitializeCallBack;
+import com.yc.music.manager.MusicPlayerManager;
 
 public class SplashActivity extends BaseActivity implements InitContract.InitContractView {
 
@@ -31,7 +33,11 @@ public class SplashActivity extends BaseActivity implements InitContract.InitCon
         mInitPresenter.attachView(this);
 //        mInitPresenter.netInitData();
 
+
+
         startNext();
+
+
     }
 
     @Override

@@ -16,10 +16,11 @@
             android:layout_marginLeft="22dp"
             android:background="@mipmap/ic_video_bg">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/iv_learn_child_video_cover"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="video" />
+                android:src="@mipmap/ic_ph_video_cover" />
 
         </RelativeLayout>
 
@@ -27,7 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
-            android:layout_marginTop="18dp">
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="8dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -49,11 +51,27 @@
                     android:textSize="@dimen/size_15" />
             </RelativeLayout>
 
-            <ImageView
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:src="@mipmap/ic_lp_tips_logo" />
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_learn_child_squirrel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/ic_lp_tips_logo" />
+
+                <ProgressBar
+                    android:id="@+id/pb_learn_child"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:indeterminateTint="@color/gray_low"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
 
         </RelativeLayout>
     </LinearLayout>
@@ -65,7 +83,7 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <ImageView
@@ -79,7 +97,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/iv_learn_child_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:paddingTop="8dp" />
 
     </LinearLayout>
 </LinearLayout>
