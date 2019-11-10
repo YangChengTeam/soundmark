@@ -44,5 +44,6 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.45-androidx'
     implementation project(path: ':music')
 
-
+    //视频播放器
+    implementation 'com.imusic.player:video-player:1.0.71'
 }

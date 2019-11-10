@@ -159,6 +159,13 @@ public class MainActivity extends BasePermissionActivity implements ListContract
             }
         });
 
+        //视频播放器初始化
+//        VideoPlayerManager.getInstance()
+//                //循环模式
+////                .setLoop(true)
+//                //悬浮窗中打开播放器的绝对路径
+//                .setPlayerActivityClassName(MainActivity.class.getCanonicalName());
+
 
         mListContractPresenter = new ListContractPresenter(this);
         mListContractPresenter.attachView(this);
