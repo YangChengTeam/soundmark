@@ -14,16 +14,24 @@
         <RelativeLayout
             android:layout_width="265dp"
             android:layout_height="125dp"
-            android:layout_marginLeft="22dp"
-            android:background="@mipmap/ic_video_bg">
+            android:layout_marginLeft="22dp">
 
 
             <com.video.player.lib.view.VideoPlayerTrackView
                 android:id="@+id/video_track"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:paddingTop="3dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="3dp"
                 app:video_autoSetCoverController="true"
                 app:video_autoSetVideoController="true" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/ic_video_bg" />
 
             <ImageView
                 android:id="@+id/iv_learn_child_video_cover"

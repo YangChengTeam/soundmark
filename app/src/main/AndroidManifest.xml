@@ -4,7 +4,7 @@
     package="com.yc.aeiou">
 
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".app.YcApplication"
@@ -27,6 +27,7 @@
         </activity>
         <activity
             android:name=".view.activity.MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="landscape"
             android:theme="@style/fullScreen"></activity>
     </application>

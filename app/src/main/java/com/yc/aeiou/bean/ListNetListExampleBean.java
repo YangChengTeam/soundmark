@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Created by caokun on 2019/11/5 10:29.
  */
 
-public class ListNetListExampleBean implements Parcelable, Serializable {
+public class ListNetListExampleBean implements Serializable {
 
     public ListNetListExampleBean() {
     }
@@ -36,52 +36,6 @@ public class ListNetListExampleBean implements Parcelable, Serializable {
     public String word;
     public String word_phonetic;
 
-    // 读数据进行恢复
-    private ListNetListExampleBean(Parcel in) {
-
-        app_id = in.readString();
-        id = in.readString();
-        letter = in.readString();
-        phonetic = in.readString();
-        ptic_id = in.readString();
-        sort = in.readString();
-        video = in.readString();
-        word = in.readString();
-        word_phonetic = in.readString();
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    // 写数据进行保存
-    @Override
-    public void writeToParcel(Parcel out, int i) {
-        out.writeString(app_id);
-        out.writeString(id);
-        out.writeString(letter);
-        out.writeString(phonetic);
-        out.writeString(ptic_id);
-        out.writeString(sort);
-        out.writeString(video);
-        out.writeString(word);
-        out.writeString(word_phonetic);
-    }
-
-    // 用来创建自定义的Parcelable的对象
-    public static final Creator<ListNetListExampleBean> CREATOR = new Creator<ListNetListExampleBean>() {
-
-        @Override
-        public ListNetListExampleBean createFromParcel(Parcel parcel) {
-            return new ListNetListExampleBean(parcel);
-        }
-
-        @Override
-        public ListNetListExampleBean[] newArray(int i) {
-            return new ListNetListExampleBean[i];
-        }
-    };
 
     @Override
     public String toString() {

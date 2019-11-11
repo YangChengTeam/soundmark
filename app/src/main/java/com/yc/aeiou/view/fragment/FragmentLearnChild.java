@@ -27,7 +27,6 @@ import com.video.player.lib.base.IMediaPlayer;
 import com.video.player.lib.bean.VideoParams;
 import com.video.player.lib.constants.VideoConstants;
 import com.video.player.lib.controller.DefaultCoverController;
-import com.video.player.lib.controller.DetailsCoverController;
 import com.video.player.lib.manager.VideoPlayerManager;
 import com.video.player.lib.view.VideoPlayerTrackView;
 import com.video.player.lib.view.VideoTextureView;
@@ -110,25 +109,26 @@ public class FragmentLearnChild extends BaseMainFragment implements Observer {
 ////        videoUrl='http://baobab.kaiyanapp.com/api/v1/playUrl?vid=166707&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss', nickName=' INSIDER',
 ////        userFront='http://img.kaiyanapp.com/adf64ebd641f23df86fd13f412ae2276.jpeg?imageMogr2/quality/60/format/jpg', userSinger='在INSIDER，我们相信生活是一场冒险。我们讲述食物，旅游，设计，美容，艺术，健康，文化。跟我们一起探索吧！',
 ////        previewCount=80, durtion=466, lastTime=1572883273000, headTitle='null'}
-        mVideoParams = new VideoParams();
-        mVideoParams.setVideoiId("166707");
-        mVideoParams.setVideoTitle("死前必吃的 43 种巨型美食，想和你吃到天荒地老");
-        mVideoParams.setVideoCover("http://img.kaiyanapp.com/2e3d1a243a0f714f971e2d2aed6c2376.jpeg?imageMogr2/quality/60/format/jpg");
-        mVideoParams.setVideoDesp("当你最爱的食物被放大 10 倍，你就会获得 100 倍的幸福");
-//        mVideoParams.setVideoUrl("http://baobab.kaiyanapp.com/api/v1/playUrl?vid=166707&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss");
-        mVideoParams.setVideoUrl("http://voice.wk2.com/video/2017091807.mp4");
-        mVideoParams.setNickName("INSIDER");
-        mVideoParams.setUserFront("http://img.kaiyanapp.com/adf64ebd641f23df86fd13f412ae2276.jpeg?imageMogr2/quality/60/format/jpg");
-        mVideoParams.setUserSinger("在INSIDER，我们相信生活是一场冒险。");
-        mVideoParams.setPreviewCount(80);
-        mVideoParams.setDurtion(466);
-        mVideoParams.setLastTime(1572883273000L);
+//        mVideoParams = new VideoParams();
+//        mVideoParams.setVideoiId("166707");
+//        mVideoParams.setVideoTitle("死前必吃的 43 种巨型美食，想和你吃到天荒地老");
+//        mVideoParams.setVideoCover("http://img.kaiyanapp.com/2e3d1a243a0f714f971e2d2aed6c2376.jpeg?imageMogr2/quality/60/format/jpg");
+//        mVideoParams.setVideoDesp("当你最爱的食物被放大 10 倍，你就会获得 100 倍的幸福");
+////        mVideoParams.setVideoUrl("http://baobab.kaiyanapp.com/api/v1/playUrl?vid=166707&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss");
+//        mVideoParams.setVideoUrl("http://voice.wk2.com/video/2017091807.mp4");
+//        mVideoParams.setNickName("INSIDER");
+//        mVideoParams.setUserFront("http://img.kaiyanapp.com/adf64ebd641f23df86fd13f412ae2276.jpeg?imageMogr2/quality/60/format/jpg");
+//        mVideoParams.setUserSinger("在INSIDER，我们相信生活是一场冒险。");
+//        mVideoParams.setPreviewCount(80);
+//        mVideoParams.setDurtion(466);
+//        mVideoParams.setLastTime(1572883273000L);
 
         VideoPlayerManager.getInstance().setVideoDisplayType(VideoConstants.VIDEO_DISPLAY_TYPE_CUT);
         DefaultCoverController coverController = new DefaultCoverController(mMainActivity);
         mVideoPlayer.setVideoCoverController(coverController, false);
-        initVideoParams(false);
 
+
+//        VideoPlayerManager.getInstance().onPause();
     }
 
     private boolean mIsPlaying = false;
@@ -193,18 +193,6 @@ public class FragmentLearnChild extends BaseMainFragment implements Observer {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        VideoPlayerManager.getInstance().onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        VideoPlayerManager.getInstance().onPause();
-    }
-
-    @Override
     protected void initData() {
         //为添加媒体播放被观察者对象MusicPlayer
         MusicPlayerObservable.getInstance().addObserver(this);
@@ -212,7 +200,9 @@ public class FragmentLearnChild extends BaseMainFragment implements Observer {
 
         Bundle arguments = getArguments();
         if (arguments != null) {
-            ListNetListBean listNetListBean = arguments.getParcelable("listNetListBean");
+            int fragmentPosition = arguments.getInt("fragmentPosition");
+            ListNetListBean listNetListBean = mMainActivity.mList.get(fragmentPosition);
+//            ListNetListBean listNetListBean = arguments.getParcelable("listNetListBean");
             Log.d("sssss", "initData: listNetListBean " + listNetListBean.toString());
             mDespAudio = listNetListBean.desp_audio;
 
@@ -230,18 +220,23 @@ public class FragmentLearnChild extends BaseMainFragment implements Observer {
                 ListNetListExampleBean listNetListExampleBean = example.get(position);
                 playMusic(true, pb, itemView, listNetListExampleBean.video);
             });
-//            recyclerLearnChildAdapter.setOnClickItemListent(new RecyclerLearnChildAdapter.OnClickItemListent() {
-//                @Override
-//                public void clickItem(LinearLayout itemView, ProgressBar pb, int position) {
-//                    FragmentLearnChild.this.pb = pb;
-//                    pb.setVisibility(View.VISIBLE);
-//                    startAnim(itemView, pb);
-//
-//                    ListNetListExampleBean listNetListExampleBean = example.get(position);
-//                    MusicPlayerManager.getInstance().startPlayMusic(listNetListExampleBean.video);
-//                }
-//
-//            });
+
+            mVideoParams = new VideoParams();
+            mVideoParams.setVideoiId(String.valueOf(fragmentPosition + 1000));
+            mVideoParams.setVideoTitle(listNetListBean.desp);
+            mVideoParams.setVideoCover(listNetListBean.cover);
+            mVideoParams.setVideoDesp("");
+//        mVideoParams.setVideoUrl("http://baobab.kaiyanapp.com/api/v1/playUrl?vid=166707&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss");
+            mVideoParams.setVideoUrl(listNetListBean.video);
+//            mVideoParams.setVideoUrl("http://voice.wk2.com/video/2017091807.mp4");
+            mVideoParams.setNickName("INSIDER");
+            mVideoParams.setUserFront("http://img.kaiyanapp.com/adf64ebd641f23df86fd13f412ae2276.jpeg?imageMogr2/quality/60/format/jpg");
+            mVideoParams.setUserSinger("在INSIDER，我们相信生活是一场冒险。");
+            mVideoParams.setPreviewCount(80);
+            mVideoParams.setDurtion(466);
+            mVideoParams.setLastTime(1572883273000L);
+
+            initVideoParams(false);
         }
 
     }
@@ -288,6 +283,18 @@ public class FragmentLearnChild extends BaseMainFragment implements Observer {
 
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        VideoPlayerManager.getInstance().onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        VideoPlayerManager.getInstance().onPause();
     }
 
     @Override

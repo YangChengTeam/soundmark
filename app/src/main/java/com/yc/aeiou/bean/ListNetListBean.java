@@ -11,7 +11,7 @@ import java.util.List;
  * Created by caokun on 2019/11/5 10:28.
  */
 
-public class ListNetListBean implements Parcelable, Serializable {
+public class ListNetListBean implements  Serializable {
 
     public ListNetListBean() {
     }
@@ -47,63 +47,6 @@ public class ListNetListBean implements Parcelable, Serializable {
     public String video;
     public String voice;
     public ArrayList<ListNetListExampleBean> example;
-
-
-    // 读数据进行恢复
-    private ListNetListBean(Parcel in) {
-        app_id = in.readString();
-        cover = in.readString();
-        desp = in.readString();
-        desp_audio = in.readString();
-        hanzi = in.readString();
-        id = in.readString();
-        img = in.readString();
-        name = in.readString();
-        sort = in.readString();
-        strokes_img = in.readString();
-        type = in.readString();
-        video = in.readString();
-        voice = in.readString();
-        example = in.readArrayList(ListNetListExampleBean.class.getClassLoader());
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    // 写数据进行保存
-    @Override
-    public void writeToParcel(Parcel out, int i) {
-        out.writeString(app_id);
-        out.writeString(cover);
-        out.writeString(desp);
-        out.writeString(desp_audio);
-        out.writeString(hanzi);
-        out.writeString(id);
-        out.writeString(img);
-        out.writeString(name);
-        out.writeString(sort);
-        out.writeString(strokes_img);
-        out.writeString(type);
-        out.writeString(video);
-        out.writeString(voice);
-        out.writeList(example);
-    }
-
-    // 用来创建自定义的Parcelable的对象
-    public static final Creator<ListNetListBean> CREATOR = new Creator<ListNetListBean>() {
-
-        @Override
-        public ListNetListBean createFromParcel(Parcel parcel) {
-            return new ListNetListBean(parcel);
-        }
-
-        @Override
-        public ListNetListBean[] newArray(int i) {
-            return new ListNetListBean[i];
-        }
-    };
 
 
     @Override

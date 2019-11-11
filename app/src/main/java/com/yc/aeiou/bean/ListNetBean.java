@@ -11,4 +11,10 @@ public class ListNetBean implements Serializable {
 
     public ArrayList<ListNetListBean> list;
 
+    @Override
+    public String toString() {
+        return "ListNetBean{" +
+                "list=" + list +
+                '}';
+    }
 }

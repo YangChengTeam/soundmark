@@ -44,16 +44,10 @@ public class FragmentFactoryMain {
                 break;
             case MAIN_FRAGMENT_1:
                 fragment = new FragmentLearn();
-                Bundle bundle1 = new Bundle();
-                bundle1.putParcelableArrayList("listNetListBeans", listNetListBeans);
-                fragment.setArguments(bundle1);
                 fragments.put(MAIN_FRAGMENT_1, fragment);
                 break;
             case MAIN_FRAGMENT_2:
                 fragment = new FragmentRead();
-                Bundle bundle2 = new Bundle();
-                bundle2.putParcelableArrayList("listNetListBeans", listNetListBeans);
-                fragment.setArguments(bundle2);
                 fragments.put(MAIN_FRAGMENT_2, fragment);
                 break;
             case MAIN_FRAGMENT_3:

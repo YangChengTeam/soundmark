@@ -21,6 +21,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
 }
 
 dependencies {
@@ -45,5 +50,6 @@ dependencies {
     implementation project(path: ':music')
 
     //视频播放器
-    implementation 'com.imusic.player:video-player:1.0.71'
+//    implementation 'com.imusic.player:video-player:1.0.71'
+    implementation(name: 'video-player-lib-release', ext: 'aar')
 }

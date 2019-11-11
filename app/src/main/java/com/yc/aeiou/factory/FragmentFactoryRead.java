@@ -26,9 +26,6 @@ public class FragmentFactoryRead {
             return fragment;
         }
         fragment = new FragmentReadChild();
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("listNetListBean", listNetListBean);
-        fragment.setArguments(bundle);
         fragments.put(position, fragment);
         return fragment;
     }

@@ -26,7 +26,7 @@ public class FragmentFactoryLearn {
         }
         fragment = new FragmentLearnChild();
         Bundle bundle = new Bundle();
-        bundle.putParcelable("listNetListBean", listNetListBean);
+        bundle.putInt("fragmentPosition", position);
         fragment.setArguments(bundle);
         fragments.put(position, fragment);
         return fragment;

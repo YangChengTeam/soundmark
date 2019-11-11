@@ -89,16 +89,12 @@ public class FragmentRead extends BaseMainFragment implements Observer {
 
     @Override
     protected void initData() {
+        ArrayList<ListNetListBean> list = mMainActivity.mList;
+        PagerAdapterRead pagerAdapterRead = new PagerAdapterRead(mMainActivity.getSupportFragmentManager(), 0, list);
+        viewPager.setAdapter(pagerAdapterRead);
 
-        Bundle arguments = getArguments();
-        if (arguments != null) {
-            ArrayList<ListNetListBean> list = arguments.getParcelableArrayList("listNetListBeans");
-            PagerAdapterRead pagerAdapterRead = new PagerAdapterRead(mMainActivity.getSupportFragmentManager(), 0, list);
-            viewPager.setAdapter(pagerAdapterRead);
-
-            mPageSize = list.size();
-            changPageIndex(0);
-        }
+        mPageSize = list.size();
+        changPageIndex(0);
     }
 
     private void changPageIndex(int position) {

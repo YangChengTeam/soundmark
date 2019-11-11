@@ -2,6 +2,7 @@ package com.yc.aeiou.view.activity;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -50,6 +51,10 @@ public class MainActivity extends BasePermissionActivity implements ListContract
     private ListContractPresenter mListContractPresenter;
     private PagerAdapterMain mPagerAdapterMain;
 
+    private String TAG = "mylog_MainActivity";
+    public ArrayList<ListNetListBean> mList;
+    private int mCurrentItem;
+
 
     @OnPageChange(R.id.view_pager_main)
     public void onPageSelected(int position) {
@@ -84,9 +89,13 @@ public class MainActivity extends BasePermissionActivity implements ListContract
         }
     }
 
+    /**
+     * @param position 当前选中的page
+     * @param isPage   是否是滑动切换，滑动切换的情况下当前选中的=上一次选中的也切换Tab
+     */
     private void switchTab(int position, boolean isPage) {
-        int currentItem = viewPager.getCurrentItem();
-        if (!isPage && position == currentItem) {
+        mCurrentItem = viewPager.getCurrentItem();
+        if (!isPage && position == mCurrentItem) {
             return;
         }
         cleanAllTab();
@@ -172,16 +181,12 @@ public class MainActivity extends BasePermissionActivity implements ListContract
 
         ListNetBean listNetBean = (ListNetBean) mListContractPresenter.loadDataList();
         if (listNetBean != null) {
-            ArrayList<ListNetListBean> list = listNetBean.list;
-            mPagerAdapterMain = new PagerAdapterMain(getSupportFragmentManager(), 0, list);
+            Log.d(TAG, "initData: listNetBean " + listNetBean.toString());
+
+            mList = listNetBean.list;
+            mPagerAdapterMain = new PagerAdapterMain(getSupportFragmentManager(), 0, mList);
             viewPager.setAdapter(mPagerAdapterMain);
         }
-
-
-//        mMainPresenter = new MainContractPresenter(this);
-//        mMainPresenter.attachView(this);
-//        mMainPresenter.loadDataClass();
-//        mMainPresenter.loadDataList();
 
 
     }
@@ -202,10 +207,13 @@ public class MainActivity extends BasePermissionActivity implements ListContract
 
     @Override
     public void loadDataListSuccess(ListNetBean data) {
-        ArrayList<ListNetListBean> list = data.list;
-        mPagerAdapterMain = new PagerAdapterMain(getSupportFragmentManager(), 0, list);
+        Log.d(TAG, "loadDataListSuccess: -----------------------------------------");
+        mList = data.list;
+        Log.d(TAG, "loadDataListSuccess: listNetBean22222 " + mList.toString());
+        mPagerAdapterMain = new PagerAdapterMain(getSupportFragmentManager(), 0, mList);
         viewPager.setAdapter(mPagerAdapterMain);
 
+        viewPager.setCurrentItem(mCurrentItem);
     }
 
     @Override

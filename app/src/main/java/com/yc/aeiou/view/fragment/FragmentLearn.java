@@ -39,7 +39,6 @@ public class FragmentLearn extends BaseMainFragment implements Observer {
     public ViewPager viewPager;
     private int mPageSize;
     private PageChangObservable mPageChangObservable;
-    private ArrayList<ListNetListBean> list;
 
     @OnPageChange(R.id.viewpager_learn)
     public void onPageSelected(int position) {
@@ -89,17 +88,22 @@ public class FragmentLearn extends BaseMainFragment implements Observer {
 
     @Override
     protected void initData() {
-        Bundle arguments = getArguments();
-        if (arguments != null) {
-            ArrayList<ListNetListBean> list = arguments.getParcelableArrayList("listNetListBeans");
-            PagerAdapterLearn pagerAdapterLearn = new PagerAdapterLearn(mMainActivity.getSupportFragmentManager(), 0, list);
-            viewPager.setAdapter(pagerAdapterLearn);
+        ArrayList<ListNetListBean> list = mMainActivity.mList;
+        PagerAdapterLearn pagerAdapterLearn = new PagerAdapterLearn(mMainActivity.getSupportFragmentManager(), 0, list);
+        viewPager.setAdapter(pagerAdapterLearn);
 
-            mPageSize = list.size();
-            changPageIndex(0);
-
-            this.list = list;
-        }
+        mPageSize = list.size();
+        changPageIndex(0);
+//        Bundle arguments = getArguments();
+//        if (arguments != null) {
+//            ArrayList<ListNetListBean> list = arguments.getParcelableArrayList("listNetListBeans");
+//            PagerAdapterLearn pagerAdapterLearn = new PagerAdapterLearn(mMainActivity.getSupportFragmentManager(), 0, list);
+//            viewPager.setAdapter(pagerAdapterLearn);
+//
+//            mPageSize = list.size();
+//            changPageIndex(0);
+//
+//        }
     }
 
     private void changPageIndex(int position) {
